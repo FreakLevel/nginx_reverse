@@ -1,6 +1,4 @@
 FROM nginx
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
 VOLUME ./nginx /nginx
 RUN mkdir -p /nginx/config
 RUN mkdir -p /nginx/pages
