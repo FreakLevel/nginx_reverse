@@ -7,7 +7,7 @@ services:
       - "80"
       - "443"
       - "8999:8999/tcp"
-    volume:
+    volumes:
       - ./config:/etc/nginx/conf.d/
       - ./pages:/var/www/html/
       - ./includes:/etc/nginx/includes/
