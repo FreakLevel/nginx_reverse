@@ -1,0 +1,16 @@
+version: '3.4'
+services:
+  reverse_proxy:
+    image: nginx
+    init: true
+    ports:
+      - "80"
+      - "443"
+      - "8999:8999/tcp"
+    volume:
+      - ./config:/etc/nginx/conf.d/
+      - ./pages:/var/www/html/
+      - ./includes:/etc/nginx/includes/
+      - ./ssl_files:/etc/ssl/certs/nginx/
+    build:
+      network: host
