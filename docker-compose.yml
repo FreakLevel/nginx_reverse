@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   reverse_proxy:
-    image: nginx
+    image: nginx:latest
     init: true
     ports:
       - "80"
@@ -13,4 +13,5 @@ services:
       - ./includes:/etc/nginx/includes/
       - ./ssl_files:/etc/ssl/certs/nginx/
     build:
+      context: .
       network: host
