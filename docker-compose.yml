@@ -1,7 +1,8 @@
 version: '3.9'
 services:
   reverse_proxy:
-    image: nginx
+    build:
+      context: .
     init: true
     links: 
       - "syncplay"
@@ -10,9 +11,8 @@ services:
       - "443:443"
       - "8999:8999/tcp"
     volumes:
-      - ./config:/etc/nginx/
       - ./pages:/var/www/html/
-      - ./includes:/etc/nginx/includes/
+      - ./includes:/etc/nginx/config.d/
       - ./ssl_files:/etc/ssl/certs/nginx/
     network_mode: "bridge"
 
