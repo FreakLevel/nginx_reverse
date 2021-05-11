@@ -26,10 +26,10 @@ services:
       - "8999"
     network_mode: "bridge"
     environment:
-      - PASSWORD: "Pinguino1"
-      - PORT: 8999
-      - TLS: "/certs"
-      - SALT: "DhP2da8vWdWf"
+      PASSWORD: "Pinguino1"
+      PORT: 8999
+      TLS: "/certs"
+      SALT: "DhP2da8vWdWf"
     volumes:
       - ./ssl_files:/certs
     depends_on:
