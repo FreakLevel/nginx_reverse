@@ -1,16 +1,12 @@
 FROM nginx
-VOLUME ./nginx /nginx
-RUN mkdir -p /nginx/config
-RUN mkdir -p /nginx/pages
-RUN mkdir -p /nginx/includes
-RUN mkdir -p /nginx/ssl
-RUN mkdir -p /etc/nginx/conf.d/
-RUN mkdir -p /var/www/html/
-RUN mkdir -p /etc/nginx/includes/
-RUN mkdir -p /etc/ssl/certs/nginx/
-RUN ln -s /nginx/config/ /etc/nginx/conf.d/
-RUN ln -s /nginx/pages/ /var/www/html/
-RUN ln -s /nginx/includes/ /etc/nginx/includes/
-RUN ln -s /nginx/ssl/ /etc/ssl/certs/nginx/
+RUN apt update && apt install -y \
+  wget patch build-essential
+RUN wget 'http://nginx.org/download/nginx-1.2.1.tar.gz'
+RUN tar -xzvf nginx-1.2.1.tar.gz
+RUN cd nginx-1.2.1/
+RUN patch -p1 < /path/to/nginx_tcp_proxy_module/tcp.patc
+RUN ./configure --add-module=/path/to/nginx_tcp_proxy_module
+RUN make
+RUN make install
 
 # docker run -d --rm --name reverse_proxy -p 80:80 -p 443:443 -p 8997:8997 -v $PWD/config/:/etc/nginx/conf.d/ -v $PWD/pages/:/var/www/html/ -v $PWD/includes/:/etc/nginx/includes/ -v $PWD/ssl_files/:/etc/ssl/certs/nginx/ nginx
