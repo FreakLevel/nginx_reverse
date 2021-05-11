@@ -3,6 +3,7 @@ services:
   reverse_proxy:
     build:
       context: .
+      dockerfile: Dockerfile
     init: true
     links: 
       - "syncplay"
