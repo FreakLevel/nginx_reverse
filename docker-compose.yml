@@ -10,7 +10,7 @@ services:
       - "443:443"
       - "8999:8999/tcp"
     volumes:
-      - ./config:/etc/nginx/conf.d/
+      - ./config:/etc/nginx/
       - ./pages:/var/www/html/
       - ./includes:/etc/nginx/includes/
       - ./ssl_files:/etc/ssl/certs/nginx/
