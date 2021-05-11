@@ -32,5 +32,3 @@ services:
       SALT: "DhP2da8vWdWf"
     volumes:
       - ./ssl_files:/certs
-    depends_on:
-      - reverse_proxy
